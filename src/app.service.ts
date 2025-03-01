@@ -7,6 +7,6 @@ export class AppService {
   }
 
   getHello2(): string {
-    return '1234564';
+    return '1234561234564';
   }
 }
