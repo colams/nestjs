@@ -1,7 +1,10 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+import { config } from 'dotenv';
+// 读取 .env 文件
+const envConfig = config();
 
-@Controller('api')
+@Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
@@ -10,23 +13,8 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get("name")
-  getName(): string {
-    return 'test name';
-  }
-
-  @Get("ee")
-  getEE(): string {
-    return 'test ee';
+  @Get('/t')
+  getHelloo(): string {
+    return envConfig.parsed.DB_HOST || process.env.DB_HOST || 'tttt';
   }
 }
-
-// @Controller('cats')
-// export class CatsController {
-//   constructor(private readonly appService: AppService) {}
-
-//   @Get()
-//   getHello2(): string {
-//     return this.appService.getHello2();
-//   }
-// }
