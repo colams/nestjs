@@ -1,5 +1,6 @@
 import { Controller, Post } from '@nestjs/common';
 import { AppService } from './app.service';
+import { SearchFileParams, SearchFileResult } from './types/searchFile';
 
 @Controller('api')
 export class AppController {
@@ -26,7 +27,7 @@ export class CatsController {
   constructor(private readonly appService: AppService) {}
 
   @Post()
-  getHello2(): string {
+  getHello2(params: SearchFileParams): SearchFileResult[] {
     return this.appService.getHello2();
   }
 }
